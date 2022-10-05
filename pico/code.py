@@ -21,7 +21,6 @@ photocell = analogio.AnalogIn(board.GP26)
 # Relay Setup and control
 relay = digitalio.DigitalInOut(board.GP16)
 relay.direction = digitalio.Direction.OUTPUT
-# relay.pull = digitalio.Pull.DOWN
 relay.value = False
 
 
@@ -81,7 +80,7 @@ timeVariation = 0
 
 while True:
     timeElapsed = round((time.monotonic() - timeStart) - timeVariation)  
-    light = (photocell.value / 65535) * 3.3
+    light = (photocell.value / 65535)*100
     print(light)
     try:
         # Checks if ESP is connected to WiFi
@@ -124,8 +123,6 @@ while True:
             
             try:
                 response = requests.get(JSON_GET_URL) #the get request
-                # response = requests.request(JSON_GET_URL)
-                
                 failure_count = 0
             except AssertionError as error:
                 print("Request failed, retrying...\n", error)

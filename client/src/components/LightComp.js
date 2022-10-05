@@ -151,7 +151,7 @@ const LightComp = (props) => {
           </div>
           
           <Line options={options} data={data} />
-          <div onClick={relayToggle} className='button'>Toggle LED</div>
+          <div onClick={relayToggle} className='button'>Toggle Relay</div>
           <div className='led'><img src={ledImage}></img></div>
         </div>
        
